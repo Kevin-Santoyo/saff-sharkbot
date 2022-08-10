@@ -7,6 +7,7 @@ const participantID = process.env.PARTICIPANT_ID;
 const botAccountName = process.env.BOT_NAME
 const OAuthToken = process.env.OAUTH_TOKEN
 const BaseServerURL = process.env.API_SERVER
+const STRAPI_TOKEN = process.env.STRAPI_TOKEN
 
 const client = new tmi.Client({
     connection: {
@@ -180,7 +181,10 @@ async function setSwearCount(userID, count) {
     const response = await fetch(BaseServerURL + 'api/swears/' + userID, {
         method: 'PUT',
         body: JSON.stringify(reponseBody),
-        headers: { 'Content-Type': 'application/json' }
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + STRAPI_TOKEN
+        }
     })
 
     if (response.ok) {
@@ -208,7 +212,10 @@ async function updateSwearCount(userID) {
     const response2 = await fetch(BaseServerURL + 'api/swears/' + userID, {
         method: 'PUT',
         body: JSON.stringify(reponseBody),
-        headers: { 'Content-Type': 'application/json' }
+        headers: { 
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + STRAPI_TOKEN
+        }
     })
 
     if (response2.ok) {
