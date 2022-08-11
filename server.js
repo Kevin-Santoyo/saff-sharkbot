@@ -44,7 +44,7 @@ client.on('message', (channel, tags, message, self) => {
     if (command === 'swear') {
         const name = args[0]
         if (name) {
-            const userID = streamerNameSearch(name)
+            const userID = streamerNameSearch(name.toLowerCase())
             const isUpdated = updateSwearCount(userID)
             if (isUpdated) {
                 client.say(channel, `${name}'s swear count has been updated`)
