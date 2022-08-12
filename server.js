@@ -22,7 +22,7 @@ const client = new tmi.Client({
 });
 let donationEtag = ''
 let incentivesEtag = ''
-const authorizedUsers = ['sharkimsandfriends', 'kevshallperish', 'volcanicdiva', 'woodrow', 'timtriestwitch', 'myke', 'yelah']
+const authorizedUsers = ['sharkimsandfriends', 'KevShallPerish', 'volcanicdiva', 'woodrow', 'timtriestwitch', 'myke', 'yelah_', 'shanty34', 'ItsBrittan3yBtch', 'ImAJediBrah', 'thehound225']
 const personNames = (await getSwearCount()).data
 
 client.connect();
@@ -34,7 +34,7 @@ setInterval(getDonations, 15000)
 client.on('message', (channel, tags, message, self) => {
     const username = tags['display-name'].toLowerCase()
 
-    if (!(authorizedUsers.find(e => e === username))) return
+    if (!(authorizedUsers.find(e => e.toLowerCase() === username.toLowerCase()))) return
     if(self || !message.startsWith('!')) return
 
     const args = message.slice(1).split(' ')
