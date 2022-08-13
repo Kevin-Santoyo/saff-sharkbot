@@ -48,7 +48,7 @@ client.on('message', (channel, tags, message, self) => {
             const userID = streamerNameSearch(name.toLowerCase())
             const isUpdated = updateSwearCount(userID)
             if (isUpdated) {
-                client.say(channel, `${name}'s swear count has been updated to ${currentswear}`)
+                client.say(channel, `${name}'s swear count has been updated`)
             } else client.say(channel, 'There was an error updating the swear count')
         } else return
     }
@@ -207,7 +207,6 @@ async function updateSwearCount(userID) {
     for (let i = 0; i < response.length; i++) {
         if (userID === response[i].id) {
             newCount = response[i].attributes.count + 1
-            currentswear = newCount
             break
         }
     }
