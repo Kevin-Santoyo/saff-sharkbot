@@ -22,7 +22,7 @@ const client = new tmi.Client({
 });
 let donationEtag = ''
 let incentivesEtag = ''
-const authorizedUsers = ['sharkimsandfriends', 'KevShallPerish', 'volcanicdiva', 'woodrow', 'timtriestwitch', 'myke', 'yelah_', 'shanty34', 'ItsBrittan3yBtch', 'ImAJediBrah', 'thehound225']
+const authorizedUsers = ['sharkimsandfriends', 'KevShallPerish', 'volcanicdiva', 'woodrow', 'timtriestwitch', 'myke', 'yelah_', 'shanty34', 'ItsBrittan3yBtch', 'ImAJediBrah', 'thehound225', 'grubnack']
 const personNames = (await getSwearCount()).data
 
 client.connect();
