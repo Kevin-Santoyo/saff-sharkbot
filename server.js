@@ -30,6 +30,7 @@ let incentives
 getIncentivesBlob();
 let donationCount = 0
 setInterval(getDonations, 15000)
+let currentswear = 0
 
 client.on('message', (channel, tags, message, self) => {
     const username = tags['display-name'].toLowerCase()
@@ -47,7 +48,7 @@ client.on('message', (channel, tags, message, self) => {
             const userID = streamerNameSearch(name.toLowerCase())
             const isUpdated = updateSwearCount(userID)
             if (isUpdated) {
-                client.say(channel, `${name}'s swear count has been updated`)
+                client.say(channel, `${name}'s swear count has been updated to ${currentswear}`)
             } else client.say(channel, 'There was an error updating the swear count')
         } else return
     }
@@ -73,6 +74,12 @@ client.on('message', (channel, tags, message, self) => {
                 return
             }
         } else return
+    }
+
+    if (command === 'swearcount') {
+        if (args[0]) {
+            const name = args[0].toLowerCase()
+        }
     }
 
     if (command === 'swearnames') {
@@ -200,6 +207,7 @@ async function updateSwearCount(userID) {
     for (let i = 0; i < response.length; i++) {
         if (userID === response[i].id) {
             newCount = response[i].attributes.count + 1
+            currentswear = newCount
             break
         }
     }
@@ -223,4 +231,8 @@ async function updateSwearCount(userID) {
     } else {
         return false
     }
+}
+
+async function seeSwears(name) {
+
 }
