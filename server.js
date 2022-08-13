@@ -231,7 +231,3 @@ async function updateSwearCount(userID) {
         return false
     }
 }
-
-async function seeSwears(name) {
-
-}
